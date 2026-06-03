@@ -1,0 +1,8 @@
+/* Limpando as configurações padrão do Vite que limitam o tamanho da tela */
+body, html, #root {
+margin: 0;
+padding: 0;
+width: 100%;
+min-height: 100vh;
+background-color: #F8FAFC;
+}
