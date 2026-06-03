@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.3 on win32)" generated="2026-06-03T16:51:36.754529" rpa="false" schemaversion="5">
+<suite id="s1" name="Cadastro" source="C:\Users\anabe\OneDrive\Área de Trabalho\testeInterface\cadastro\cadastro.robot">
+<kw name="Dado que o sistema esta logado" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:51:37.003679" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument("--incognito")</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-03T16:51:37.003476" elapsed="1.427101"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-06-03T16:51:38.430837" elapsed="0.028177"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>0.5 seconds</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2026-06-03T16:51:38.459156" elapsed="0.000207"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=email</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-03T16:51:38.459449" elapsed="1.037611"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:51:39.497712" level="INFO">Typing text 'ana@elderly.com' into text field 'id=email'.</msg>
+<arg>id=email</arg>
+<arg>ana@elderly.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:51:39.497349" elapsed="1.678724"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:51:41.176478" level="INFO">Typing password into text field 'id=senha'.</msg>
+<msg time="2026-06-03T16:51:42.207099" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=senha</arg>
+<arg>123456</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:51:41.176240" elapsed="1.619202"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:51:42.795974" level="INFO">Clicking button 'id=btnLogin'.</msg>
+<arg>id=btnLogin</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:51:42.795695" elapsed="2.693605"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:51:37.002955" elapsed="8.486523"/>
+</kw>
+<test id="s1-t1" name="CT03 - Deve cadastrar medicamento valido" line="16">
+<kw name="Dado que o usuário acessa a tela de cadastro">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=navCadastro</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-03T16:51:45.490688" elapsed="1.029680"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:51:46.520905" level="INFO">Clicking element 'id=navCadastro'.</msg>
+<arg>id=navCadastro</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:51:46.520615" elapsed="1.131247"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_NOME}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-03T16:51:47.652109" elapsed="1.020703"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:51:45.490378" elapsed="3.182623"/>
+</kw>
+<kw name="E o usuario preenche o form">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:51:48.674780" level="INFO">Typing text 'Losartana' into text field 'id=nomeMedicamento'.</msg>
+<arg>${INPUT_NOME}</arg>
+<arg>${nome}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:51:48.674481" elapsed="1.660774"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:51:50.335892" level="INFO">Typing text '50mg' into text field 'id=dosagem'.</msg>
+<arg>${INPUT_DOSAGEM}</arg>
+<arg>${dosagem}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:51:50.335508" elapsed="1.808780"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:51:52.145029" level="INFO">Typing text '10' into text field 'id=quantidade'.</msg>
+<arg>${INPUT_QTD}</arg>
+<arg>${qtd}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:51:52.144583" elapsed="1.656095"/>
+</kw>
+<arg>Losartana</arg>
+<arg>50mg</arg>
+<arg>10</arg>
+<status status="PASS" start="2026-06-03T16:51:48.674102" elapsed="5.126755"/>
+</kw>
+<kw name="Quando clica em salvar">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:51:53.801877" level="INFO">Clicking button 'id=btnSalvar'.</msg>
+<arg>${BTN_SALVAR}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:51:53.801571" elapsed="2.699176"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:51:53.801241" elapsed="2.699674"/>
+</kw>
+<kw name="Entao o sistema exibe a mensagem">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MENSAGEM_SYS}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-03T16:51:56.501904" elapsed="1.044674"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:51:57.547190" level="INFO">Verifying element 'id=mensagemSistema' contains exact text 'Medicamento cadastrado!'.</msg>
+<arg>${MENSAGEM_SYS}</arg>
+<arg>${mensagem}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-06-03T16:51:57.546829" elapsed="1.034473"/>
+</kw>
+<arg>Medicamento cadastrado!</arg>
+<status status="PASS" start="2026-06-03T16:51:56.501532" elapsed="2.079971"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:51:45.489593" elapsed="13.092463"/>
+</test>
+<test id="s1-t2" name="CT04 - Deve bloquear quantidade zero" line="22">
+<kw name="Dado que o usuário acessa a tela de cadastro">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=navCadastro</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-03T16:51:58.584579" elapsed="1.057408"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:51:59.642537" level="INFO">Clicking element 'id=navCadastro'.</msg>
+<arg>id=navCadastro</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:51:59.642242" elapsed="1.101841"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_NOME}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-03T16:52:00.744299" elapsed="1.033171"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:51:58.584228" elapsed="3.193422"/>
+</kw>
+<kw name="E o usuario preenche o form">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:52:01.779542" level="INFO">Typing text 'Aspirina' into text field 'id=nomeMedicamento'.</msg>
+<arg>${INPUT_NOME}</arg>
+<arg>${nome}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:52:01.779268" elapsed="1.631180"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:52:03.411173" level="INFO">Typing text '500mg' into text field 'id=dosagem'.</msg>
+<arg>${INPUT_DOSAGEM}</arg>
+<arg>${dosagem}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:52:03.410844" elapsed="1.700356"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:52:05.111938" level="INFO">Typing text '0' into text field 'id=quantidade'.</msg>
+<arg>${INPUT_QTD}</arg>
+<arg>${qtd}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:52:05.111604" elapsed="1.635451"/>
+</kw>
+<arg>Aspirina</arg>
+<arg>500mg</arg>
+<arg>0</arg>
+<status status="PASS" start="2026-06-03T16:52:01.778892" elapsed="4.968314"/>
+</kw>
+<kw name="Quando clica em salvar">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:52:06.748495" level="INFO">Clicking button 'id=btnSalvar'.</msg>
+<arg>${BTN_SALVAR}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:52:06.748261" elapsed="2.628197"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:52:06.747993" elapsed="2.628627"/>
+</kw>
+<kw name="Entao o sistema exibe a mensagem">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MENSAGEM_SYS}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-03T16:52:09.377601" elapsed="1.020271"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:52:10.398867" level="INFO">Verifying element 'id=mensagemSistema' contains exact text 'A quantidade deve ser maior que zero'.</msg>
+<arg>${MENSAGEM_SYS}</arg>
+<arg>${mensagem}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-06-03T16:52:10.398146" elapsed="1.022988"/>
+</kw>
+<arg>A quantidade deve ser maior que zero</arg>
+<status status="PASS" start="2026-06-03T16:52:09.377267" elapsed="2.044043"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:51:58.583524" elapsed="12.838073"/>
+</test>
+<kw name="E fecha o navegador" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-03T16:52:11.422331" elapsed="2.674722"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:52:11.422198" elapsed="2.674980"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:51:36.755882" elapsed="37.341335"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Cadastro" id="s1" pass="2" fail="0" skip="0">Cadastro</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

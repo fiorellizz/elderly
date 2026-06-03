@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.3 on win32)" generated="2026-06-03T16:49:51.861284" rpa="false" schemaversion="5">
+<suite id="s1" name="Login" source="C:\Users\anabe\OneDrive\Área de Trabalho\testeInterface\login\login.robot">
+<kw name="Dado que o usuário acessa a tela de login" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:49:52.097961" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument("--incognito")</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-03T16:49:52.097746" elapsed="1.138000"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-06-03T16:49:53.235982" elapsed="0.023726"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>0.5 seconds</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2026-06-03T16:49:53.259859" elapsed="0.000206"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:49:52.097212" elapsed="1.162919"/>
+</kw>
+<test id="s1-t1" name="CT01 - Deve realizar login com dados válidos" line="16">
+<kw name="Dado que o usuario informa o email">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_EMAIL}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-03T16:49:53.261669" elapsed="1.032600"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:49:54.295206" level="INFO">Typing text 'ana@elderly.com' into text field 'id=email'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:49:54.294655" elapsed="1.683563"/>
+</kw>
+<arg>ana@elderly.com</arg>
+<status status="PASS" start="2026-06-03T16:49:53.261398" elapsed="2.716990"/>
+</kw>
+<kw name="E informa a senha">
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:49:55.979513" level="INFO">Typing password into text field 'id=senha'.</msg>
+<msg time="2026-06-03T16:49:57.064547" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${INPUT_SENHA}</arg>
+<arg>${senha}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:49:55.979163" elapsed="1.684822"/>
+</kw>
+<arg>123456</arg>
+<status status="PASS" start="2026-06-03T16:49:55.978810" elapsed="1.685311"/>
+</kw>
+<kw name="Quando solicitar o login">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:49:57.665399" level="INFO">Clicking button 'id=btnLogin'.</msg>
+<arg>${BTN_LOGIN}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:49:57.665160" elapsed="2.647082"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:49:57.664909" elapsed="2.647433"/>
+</kw>
+<kw name="Entao o sistema deve acessar a dashboard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${NAV_LOGOUT}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-03T16:50:00.313420" elapsed="1.013918"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:50:00.313181" elapsed="1.014334"/>
+</kw>
+<kw name="E o usuario faz logout">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:50:01.328736" level="INFO">Clicking element 'id=navLogout'.</msg>
+<arg>${NAV_LOGOUT}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:50:01.328432" elapsed="1.170634"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_EMAIL}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-03T16:50:02.499314" elapsed="1.020695"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:50:01.328088" elapsed="2.192118"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:49:53.260193" elapsed="10.260871"/>
+</test>
+<test id="s1-t2" name="CT02 - Deve exibir erro com dados invalidos" line="23">
+<kw name="Go To" owner="SeleniumLibrary" type="SETUP">
+<msg time="2026-06-03T16:50:03.523996" level="INFO">Opening url 'http://localhost:5173'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-06-03T16:50:03.523809" elapsed="0.691253"/>
+</kw>
+<kw name="Dado que o usuario informa o email">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_EMAIL}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-03T16:50:04.215770" elapsed="1.029211"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:50:05.245583" level="INFO">Typing text 'errado@elderly.com' into text field 'id=email'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:50:05.245239" elapsed="1.646592"/>
+</kw>
+<arg>errado@elderly.com</arg>
+<status status="PASS" start="2026-06-03T16:50:04.215472" elapsed="2.676523"/>
+</kw>
+<kw name="E informa a senha">
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:50:06.902707" level="INFO">Typing password into text field 'id=senha'.</msg>
+<msg time="2026-06-03T16:50:07.985244" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${INPUT_SENHA}</arg>
+<arg>${senha}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:50:06.902398" elapsed="1.747874"/>
+</kw>
+<arg>123456</arg>
+<status status="PASS" start="2026-06-03T16:50:06.902038" elapsed="1.748405"/>
+</kw>
+<kw name="Quando solicitar o login">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:50:08.665160" level="INFO">Clicking button 'id=btnLogin'.</msg>
+<arg>${BTN_LOGIN}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-03T16:50:08.664869" elapsed="2.711310"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:50:08.664511" elapsed="2.711846"/>
+</kw>
+<kw name="Entao o sistema deve apresentar a mensagem de erro">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MENSAGEM_ERRO}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-03T16:50:11.377860" elapsed="1.040716"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-06-03T16:50:12.419184" level="INFO">Verifying element 'id=mensagemErro' contains exact text 'Credenciais inválidas'.</msg>
+<arg>${MENSAGEM_ERRO}</arg>
+<arg>${mensagem}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-06-03T16:50:12.418817" elapsed="1.073738"/>
+</kw>
+<arg>Credenciais inválidas</arg>
+<status status="PASS" start="2026-06-03T16:50:11.377531" elapsed="2.115204"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:50:03.523108" elapsed="9.972657"/>
+</test>
+<kw name="E fecha o navegador" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-03T16:50:13.498651" elapsed="2.725653"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:50:13.498367" elapsed="2.726095"/>
+</kw>
+<status status="PASS" start="2026-06-03T16:49:51.862479" elapsed="24.362027"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login" id="s1" pass="2" fail="0" skip="0">Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
