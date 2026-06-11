@@ -1,0 +1,66 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Consumo e acesso",
+    "version": "1.0.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/consumos": {
+      "post": {
+        "summary": "CT01 (Válido): Registrar Dose",
+        "responses": {},
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "medicamentoId": {
+                    "type": "integer"
+                  },
+                  "quantidade_dose": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "example": {
+                "medicamentoId": 1,
+                "quantidade_dose": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "/medicamentos": {
+      "get": {
+        "summary": "CT01 (Válido): GET Medicamentos (Com Token)",
+        "responses": {},
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

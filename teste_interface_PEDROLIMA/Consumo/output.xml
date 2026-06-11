@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.5 on win32)" generated="2026-06-11T14:06:01.125484" rpa="false" schemaversion="5">
+<suite id="s1" name="Consumo" source="C:\Users\Pedro\documents\Projetos\elderly\teste_interface_PEDROLIMA\Consumo\consumo.robot">
+<kw name="Dado que o utilizador acede e faz login no sistema" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-11T14:06:01.401712" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-11T14:06:01.401489" elapsed="1.713390"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-06-11T14:06:03.115091" elapsed="0.038989"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_EMAIL}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-11T14:06:03.154334" elapsed="0.020262"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-11T14:06:03.174993" level="INFO">Typing text 'ana@elderly.com' into text field 'id=email'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<arg>ana@elderly.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-11T14:06:03.174763" elapsed="0.150714"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-11T14:06:03.325905" level="INFO">Typing text '123456' into text field 'id=senha'.</msg>
+<arg>${INPUT_SENHA}</arg>
+<arg>123456</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-11T14:06:03.325648" elapsed="0.087042"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-06-11T14:06:03.413150" level="INFO">Clicking element 'xpath=//*[@id="btnLogin"]'.</msg>
+<arg>${BTN_LOGIN}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-11T14:06:03.412891" elapsed="0.044821"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${BTN_REGISTRAR}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-11T14:06:03.457856" elapsed="0.237990"/>
+</kw>
+<status status="PASS" start="2026-06-11T14:06:01.400957" elapsed="2.295002"/>
+</kw>
+<test id="s1-t1" name="Web 01: Exibir alerta verde confirmando a dose de medicamento" line="15">
+<kw name="Quando clico no botao Registrar Dose">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-06-11T14:06:03.697033" level="INFO">Clicking element 'xpath=//*[@id="btnTomar-1"]'.</msg>
+<arg>${BTN_REGISTRAR}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-11T14:06:03.696784" elapsed="0.037730"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-06-11T14:06:05.734974" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-06-11T14:06:03.734623" elapsed="2.000473"/>
+</kw>
+<status status="PASS" start="2026-06-11T14:06:03.696568" elapsed="2.038653"/>
+</kw>
+<kw name="Entao Exibir alerta verde confirmando a dose de medicamento">
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-06-11T14:06:05.744416" level="INFO">Current page contains element 'xpath=//*[@id="mensagemSistema"]'.</msg>
+<arg>xpath=//*[@id="mensagemSistema"]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-06-11T14:06:05.735803" elapsed="0.008698"/>
+</kw>
+<status status="PASS" start="2026-06-11T14:06:05.735567" elapsed="0.009040"/>
+</kw>
+<tag>consumo</tag>
+<status status="PASS" start="2026-06-11T14:06:03.696044" elapsed="2.048818"/>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-11T14:06:05.745738" elapsed="2.293451"/>
+</kw>
+<status status="PASS" start="2026-06-11T14:06:01.127074" elapsed="6.912213"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">consumo</stat>
+</tag>
+<suite>
+<stat name="Consumo" id="s1" pass="1" fail="0" skip="0">Consumo</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

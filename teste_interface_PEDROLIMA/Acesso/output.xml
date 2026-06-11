@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.5 on win32)" generated="2026-06-11T13:59:36.379470" rpa="false" schemaversion="5">
+<suite id="s1" name="Acesso" source="C:\Users\Pedro\documents\Projetos\elderly\teste_interface_PEDROLIMA\Acesso\acesso.robot">
+<kw name="Dado que o usuário acessa e loga no sistema" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-11T13:59:36.657477" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-11T13:59:36.657156" elapsed="1.747933"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-06-11T13:59:38.405300" elapsed="0.039328"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_EMAIL}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-11T13:59:38.444798" elapsed="0.013182"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-11T13:59:38.458294" level="INFO">Typing text 'ana@elderly.com' into text field 'id=email'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<arg>ana@elderly.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-11T13:59:38.458093" elapsed="0.123750"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-11T13:59:38.582436" level="INFO">Typing text '123456' into text field 'id=senha'.</msg>
+<arg>${INPUT_SENHA}</arg>
+<arg>123456</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-11T13:59:38.582088" elapsed="0.102099"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-06-11T13:59:38.684601" level="INFO">Clicking element 'xpath=//*[@id="btnLogin"]'.</msg>
+<arg>${BTN_LOGIN}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-11T13:59:38.684358" elapsed="0.045877"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${BTN_SAIR}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-11T13:59:38.730478" elapsed="0.273644"/>
+</kw>
+<status status="PASS" start="2026-06-11T13:59:36.656366" elapsed="2.348002"/>
+</kw>
+<test id="s1-t1" name="Web 02: Realizar Logout com sucesso e voltar para a tela inicial" line="15">
+<kw name="Quando clico no botão &quot;Sair&quot; no menu superior">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-06-11T13:59:39.005763" level="INFO">Clicking element 'xpath=//*[@id="navLogout"]'.</msg>
+<arg>${BTN_SAIR}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-11T13:59:39.005553" elapsed="0.046931"/>
+</kw>
+<status status="PASS" start="2026-06-11T13:59:39.005320" elapsed="0.047267"/>
+</kw>
+<kw name="Então devo ser redirecionado para a tela inicial de login">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_EMAIL}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-11T13:59:39.053084" elapsed="0.217947"/>
+</kw>
+<status status="PASS" start="2026-06-11T13:59:39.052860" elapsed="0.218291"/>
+</kw>
+<kw name="E o campo de e-mail deve estar visível novamente">
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-06-11T13:59:39.275819" level="INFO">Current page contains element 'id=email'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-06-11T13:59:39.271714" elapsed="0.004156"/>
+</kw>
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-06-11T13:59:39.279292" level="INFO">Current location is 'http://localhost:5173/'.</msg>
+<arg>${URL}/</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-06-11T13:59:39.276123" elapsed="0.003219"/>
+</kw>
+<status status="PASS" start="2026-06-11T13:59:39.271472" elapsed="0.007928"/>
+</kw>
+<doc>O robô loga no sistema, clica em "Sair" e valida a volta para a tela inicial de login.</doc>
+<tag>acesso</tag>
+<tag>logout</tag>
+<status status="PASS" start="2026-06-11T13:59:39.004505" elapsed="0.275081"/>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-11T13:59:39.280277" elapsed="2.213256"/>
+</kw>
+<status status="PASS" start="2026-06-11T13:59:36.381034" elapsed="5.112600"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">acesso</stat>
+<stat pass="1" fail="0" skip="0">logout</stat>
+</tag>
+<suite>
+<stat name="Acesso" id="s1" pass="1" fail="0" skip="0">Acesso</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
