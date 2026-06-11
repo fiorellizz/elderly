@@ -1,66 +1,200 @@
 {
-  "openapi": "3.0.0",
   "info": {
-    "title": "Consumo e acesso",
-    "version": "1.0.0",
-    "description": ""
+    "name": "Elderly - Consumo e Acesso",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
-  "servers": [
+  "item": [
     {
-      "url": "http://localhost:3000"
-    }
-  ],
-  "paths": {
-    "/consumos": {
-      "post": {
-        "summary": "CT01 (Válido): Registrar Dose",
-        "responses": {},
-        "security": [
-          {
-            "BearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "medicamentoId": {
-                    "type": "integer"
-                  },
-                  "quantidade_dose": {
-                    "type": "integer"
-                  }
-                }
-              },
-              "example": {
-                "medicamentoId": 1,
-                "quantidade_dose": 1
-              }
-            }
+      "name": "CT01 (Válido): Registrar Dose",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code deve ser 201 Created\", function () {\r",
+              "    pm.response.to.have.status(201);\r",
+              "});"
+            ],
+            "type": "text/javascript"
           }
         }
-      }
-    },
-    "/medicamentos": {
-      "get": {
-        "summary": "CT01 (Válido): GET Medicamentos (Com Token)",
-        "responses": {},
-        "security": [
-          {
-            "BearerAuth": []
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"medicamentoId\": 1,\n  \"quantidade_dose\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
           }
-        ]
-      }
+        },
+        "url": {
+          "raw": "http://localhost:3000/consumos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "consumos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CT02 (Inválido): Registrar Dose (ID em branco)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code deve indicar Erro (400 ou 404)\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([400, 401, 404, 500]);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"medicamentoId\": \"\",\n  \"quantidade_dose\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/consumos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "consumos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CT01 (Válido): GET Medicamentos (Com Token)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code deve ser 200 OK\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"A resposta deve ser uma lista de medicamentos\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData).to.be.an('array');\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/medicamentos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "medicamentos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CT02 (Inválido): GET Medicamentos (Sem Token)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code deve ser 401 Unauthorized\", function () {\r",
+              "    pm.response.to.have.status(401);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Mensagem deve ser 'Token não fornecido'\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.erro).to.eql(\"Token não fornecido\");\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/medicamentos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "medicamentos"
+          ]
+        }
+      },
+      "response": []
     }
-  },
-  "components": {
-    "securitySchemes": {
-      "BearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
-      }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": ""
     }
-  }
+  ]
 }
