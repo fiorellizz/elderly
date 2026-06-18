@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.12.3 on linux)" generated="2026-06-18T14:58:17.309753" rpa="false" schemaversion="5">
+<suite id="s1" name="Botao Bloqueado" source="/home/guilherme/Documentos/elderly/teste_interface_ANABELL/botao_bloqueado/botao_bloqueado.robot">
+<kw name="Dado que o cuidador acessa e faz login no sistema" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:17.770259" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=${OPCOES}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-18T14:58:17.769763" elapsed="1.154024"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-06-18T14:58:18.924114" elapsed="0.036040"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_EMAIL}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-18T14:58:18.960499" elapsed="0.029414"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:18.991063" level="INFO">Typing text 'ana@elderly.com' into text field 'id=email'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<arg>ana@elderly.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T14:58:18.990239" elapsed="0.191859"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:19.182696" level="INFO">Typing password into text field 'id=senha'.</msg>
+<msg time="2026-06-18T14:58:19.211497" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${INPUT_SENHA}</arg>
+<arg>123456</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T14:58:19.182356" elapsed="0.094179"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:19.277124" level="INFO">Clicking element 'id=btnLogin'.</msg>
+<arg>${BTN_LOGIN}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T14:58:19.276818" elapsed="0.060736"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${NAV_AUDITORIA}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-18T14:58:19.337866" elapsed="0.305292"/>
+</kw>
+<status status="PASS" start="2026-06-18T14:58:17.768736" elapsed="1.874616"/>
+</kw>
+<test id="s1-t1" name="Web 02: Botao Registrar Dose deve estar desabilitado com estoque zerado" line="17">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${BTN_TOMAR_ZERADO}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-18T14:58:19.643976" elapsed="0.016551"/>
+</kw>
+<kw name="Element Should Be Disabled" owner="SeleniumLibrary">
+<arg>${BTN_TOMAR_ZERADO}</arg>
+<doc>Verifies that element identified by ``locator`` is disabled.</doc>
+<status status="PASS" start="2026-06-18T14:58:19.660833" elapsed="0.010099"/>
+</kw>
+<doc>Particao de Equivalencia (estoque = 0): o medicamento sem estoque mantem o botao "Registrar Dose" desabilitado, impedindo o clique.</doc>
+<tag>borda</tag>
+<tag>consumo</tag>
+<tag>estoque</tag>
+<status status="PASS" start="2026-06-18T14:58:19.643462" elapsed="0.027638"/>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-18T14:58:19.671549" elapsed="0.097735"/>
+</kw>
+<status status="PASS" start="2026-06-18T14:58:17.311876" elapsed="2.457493"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">borda</stat>
+<stat pass="1" fail="0" skip="0">consumo</stat>
+<stat pass="1" fail="0" skip="0">estoque</stat>
+</tag>
+<suite>
+<stat name="Botao Bloqueado" id="s1" pass="1" fail="0" skip="0">Botao Bloqueado</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

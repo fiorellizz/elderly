@@ -1,0 +1,64 @@
+{
+  "info": {
+    "name": "Elderly - API 07 - Login (Carga Vazia) - Guilherme",
+    "description": "POST /auth/login - Particionamento de Equivalencia (credenciais validas x carga vazia).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" }
+  ],
+  "item": [
+    {
+      "name": "CT01 - P1 Credenciais validas",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "url": { "raw": "{{baseUrl}}/auth/login", "host": [ "{{baseUrl}}" ], "path": [ "auth", "login" ] },
+        "body": { "mode": "raw", "raw": "{\n  \"email\": \"ana@elderly.com\",\n  \"senha\": \"123456\"\n}" }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code deve ser 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"Deve retornar um token JWT\", function () {",
+              "    var json = pm.response.json();",
+              "    pm.expect(json).to.have.property('token');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CT02 - P2 Carga vazia",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "url": { "raw": "{{baseUrl}}/auth/login", "host": [ "{{baseUrl}}" ], "path": [ "auth", "login" ] },
+        "body": { "mode": "raw", "raw": "{\n  \"email\": \"\",\n  \"senha\": \"\"\n}" }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code deve ser 401\", function () {",
+              "    pm.response.to.have.status(401);",
+              "});",
+              "pm.test(\"Mensagem deve ser 'Credenciais invalidas'\", function () {",
+              "    var json = pm.response.json();",
+              "    pm.expect(json.mensagem).to.eql('Credenciais inválidas');",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

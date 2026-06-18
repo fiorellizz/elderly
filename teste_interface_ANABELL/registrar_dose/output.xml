@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.12.3 on linux)" generated="2026-06-18T14:58:10.907107" rpa="false" schemaversion="5">
+<suite id="s1" name="Registrar Dose" source="/home/guilherme/Documentos/elderly/teste_interface_ANABELL/registrar_dose/registrar_dose.robot">
+<kw name="Dado que o cuidador acessa e faz login no sistema" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:11.649261" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=${OPCOES}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-18T14:58:11.648282" elapsed="2.204719"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-06-18T14:58:13.853564" elapsed="0.057041"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_EMAIL}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-18T14:58:13.911187" elapsed="0.071086"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:13.983388" level="INFO">Typing text 'ana@elderly.com' into text field 'id=email'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<arg>ana@elderly.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T14:58:13.982707" elapsed="0.499883"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:14.483789" level="INFO">Typing password into text field 'id=senha'.</msg>
+<msg time="2026-06-18T14:58:14.559766" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${INPUT_SENHA}</arg>
+<arg>123456</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T14:58:14.483057" elapsed="0.242527"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:14.726840" level="INFO">Clicking element 'id=btnLogin'.</msg>
+<arg>${BTN_LOGIN}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T14:58:14.726002" elapsed="0.160905"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${BTN_TOMAR}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-18T14:58:14.887362" elapsed="0.876997"/>
+</kw>
+<status status="PASS" start="2026-06-18T14:58:11.646603" elapsed="4.118121"/>
+</kw>
+<test id="s1-t1" name="Web 01: Registrar dose deve dar baixa no estoque" line="18">
+<kw name="Obter o estoque atual do medicamento">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:15.895406" level="INFO">${texto} = 21 un.</msg>
+<var>${texto}</var>
+<arg>${ESTOQUE_MED1}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T14:58:15.767345" elapsed="0.128165"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2026-06-18T14:58:15.897762" level="INFO">${qtd} = 21</msg>
+<var>${qtd}</var>
+<arg>${texto.split()[0]}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2026-06-18T14:58:15.895897" elapsed="0.001978"/>
+</kw>
+<return>
+<value>${qtd}</value>
+<status status="PASS" start="2026-06-18T14:58:15.898089" elapsed="0.000178"/>
+</return>
+<msg time="2026-06-18T14:58:15.898670" level="INFO">${qtd_antes} = 21</msg>
+<var>${qtd_antes}</var>
+<status status="PASS" start="2026-06-18T14:58:15.766674" elapsed="0.132062"/>
+</kw>
+<kw name="Quando clico em Registrar Dose">
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:15.903147" level="INFO">Executing JavaScript:
+document.getElementById("btnTomar-1").click()
+Without any arguments.</msg>
+<arg>document.getElementById("btnTomar-1").click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-06-18T14:58:15.902768" elapsed="0.090355"/>
+</kw>
+<status status="PASS" start="2026-06-18T14:58:15.901386" elapsed="0.091982"/>
+</kw>
+<kw name="Entao o alerta verde de sucesso e exibido">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${MENSAGEM_SYS}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-18T14:58:15.994489" elapsed="0.307975"/>
+</kw>
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:16.340449" level="INFO">Element 'id=mensagemSistema' contains text 'Dose registrada com sucesso'.</msg>
+<arg>${MENSAGEM_SYS}</arg>
+<arg>Dose registrada com sucesso</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-06-18T14:58:16.302952" elapsed="0.037776"/>
+</kw>
+<status status="PASS" start="2026-06-18T14:58:15.993816" elapsed="0.347151"/>
+</kw>
+<kw name="E o estoque exibido diminui em uma unidade">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-06-18T14:58:16.343593" level="INFO">${esperado} = 20</msg>
+<var>${esperado}</var>
+<arg>${qtd_antes} - 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-06-18T14:58:16.342310" elapsed="0.001398"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="O estoque exibido deve ser">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:16.498163" level="INFO">${texto} = 20 un.</msg>
+<var>${texto}</var>
+<arg>${ESTOQUE_MED1}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T14:58:16.345825" elapsed="0.152435"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2026-06-18T14:58:16.500214" level="INFO">${atual} = 20</msg>
+<var>${atual}</var>
+<arg>${texto.split()[0]}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2026-06-18T14:58:16.498593" elapsed="0.001706"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${atual}</arg>
+<arg>${esperado}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-06-18T14:58:16.500602" elapsed="0.000739"/>
+</kw>
+<arg>${esperado}</arg>
+<status status="PASS" start="2026-06-18T14:58:16.345163" elapsed="0.156344"/>
+</kw>
+<arg>10x</arg>
+<arg>1s</arg>
+<arg>O estoque exibido deve ser</arg>
+<arg>${esperado}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-06-18T14:58:16.344068" elapsed="0.157637"/>
+</kw>
+<arg>${qtd_antes}</arg>
+<status status="PASS" start="2026-06-18T14:58:16.341407" elapsed="0.160445"/>
+</kw>
+<doc>Tabela de Decisao: cuidador autenticado + clique em "Registrar Dose" -&gt; dose registrada e estoque reduzido em 1 unidade.</doc>
+<tag>consumo</tag>
+<tag>estoque</tag>
+<status status="PASS" start="2026-06-18T14:58:15.764947" elapsed="0.737148"/>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-18T14:58:16.503187" elapsed="0.212937"/>
+</kw>
+<status status="PASS" start="2026-06-18T14:58:10.909935" elapsed="5.806350"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">consumo</stat>
+<stat pass="1" fail="0" skip="0">estoque</stat>
+</tag>
+<suite>
+<stat name="Registrar Dose" id="s1" pass="1" fail="0" skip="0">Registrar Dose</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

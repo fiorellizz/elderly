@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.12.3 on linux)" generated="2026-06-18T14:58:24.136784" rpa="false" schemaversion="5">
+<suite id="s1" name="Validacao Estoque" source="/home/guilherme/Documentos/elderly/teste_interface_GUILHERME/validacao_estoque/validacao_estoque.robot">
+<kw name="Dado que o cuidador acessa e faz login no sistema" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:24.821479" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=${OPCOES}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-18T14:58:24.820241" elapsed="2.165245"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-06-18T14:58:26.986162" elapsed="0.093756"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_EMAIL}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-18T14:58:27.080418" elapsed="0.060014"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:27.141847" level="INFO">Typing text 'ana@elderly.com' into text field 'id=email'.</msg>
+<arg>${INPUT_EMAIL}</arg>
+<arg>ana@elderly.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T14:58:27.140951" elapsed="0.408758"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:27.550520" level="INFO">Typing password into text field 'id=senha'.</msg>
+<msg time="2026-06-18T14:58:27.609472" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${INPUT_SENHA}</arg>
+<arg>123456</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T14:58:27.550030" elapsed="0.181649"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:27.732349" level="INFO">Clicking element 'id=btnLogin'.</msg>
+<arg>${BTN_LOGIN}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T14:58:27.731956" elapsed="0.116795"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${NAV_CADASTRO}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-18T14:58:27.849104" elapsed="0.451580"/>
+</kw>
+<status status="PASS" start="2026-06-18T14:58:24.817856" elapsed="3.483150"/>
+</kw>
+<test id="s1-t1" name="Web 02: Campo Estoque Inicial deve bloquear caracteres alfabeticos" line="17">
+<kw name="Dado que acesso a tela de cadastro">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:28.304196" level="INFO">Clicking element 'id=navCadastro'.</msg>
+<arg>${NAV_CADASTRO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T14:58:28.303635" elapsed="0.340718"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_QTD}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-18T14:58:28.644733" elapsed="0.029080"/>
+</kw>
+<status status="PASS" start="2026-06-18T14:58:28.302990" elapsed="0.371003"/>
+</kw>
+<kw name="Quando digito letras no campo Estoque Inicial">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:28.675085" level="INFO">Typing text 'ABC' into text field 'id=quantidade'.</msg>
+<arg>${INPUT_QTD}</arg>
+<arg>${letras}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T14:58:28.674669" elapsed="0.095788"/>
+</kw>
+<arg>ABC</arg>
+<status status="PASS" start="2026-06-18T14:58:28.674258" elapsed="0.096356"/>
+</kw>
+<kw name="Entao o campo Estoque Inicial permanece vazio">
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2026-06-18T14:58:28.794238" level="INFO">${valor} = </msg>
+<var>${valor}</var>
+<arg>${INPUT_QTD}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T14:58:28.771232" elapsed="0.023074"/>
+</kw>
+<kw name="Should Be Empty" owner="BuiltIn">
+<msg time="2026-06-18T14:58:28.795314" level="INFO">Length is 0.</msg>
+<arg>${valor}</arg>
+<doc>Verifies that the given item is empty.</doc>
+<status status="PASS" start="2026-06-18T14:58:28.794533" elapsed="0.000850"/>
+</kw>
+<status status="PASS" start="2026-06-18T14:58:28.770881" elapsed="0.024599"/>
+</kw>
+<doc>Particao de Equivalencia (entrada invalida - letras): o campo numerico "Estoque Inicial" deve rejeitar a entrada "ABC" e permanecer vazio.</doc>
+<tag>cadastro</tag>
+<tag>validacao</tag>
+<status status="PASS" start="2026-06-18T14:58:28.301247" elapsed="0.494393"/>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-18T14:58:28.796460" elapsed="0.133813"/>
+</kw>
+<status status="PASS" start="2026-06-18T14:58:24.139383" elapsed="4.791004"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">cadastro</stat>
+<stat pass="1" fail="0" skip="0">validacao</stat>
+</tag>
+<suite>
+<stat name="Validacao Estoque" id="s1" pass="1" fail="0" skip="0">Validacao Estoque</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
